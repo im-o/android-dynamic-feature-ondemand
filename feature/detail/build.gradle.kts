@@ -1,7 +1,7 @@
 import dependencies.MyDependencies
 
 plugins {
-    id("com.android.application")
+    id("com.android.dynamic-feature")
     id("org.jetbrains.kotlin.android")
     id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
@@ -9,16 +9,11 @@ plugins {
 
 @Suppress("UnstableApiUsage")
 android {
-    namespace = "id.rivaldy.githubuser"
+    namespace = "id.rivaldy.detail"
     compileSdk = Versions.compile_sdk
 
     defaultConfig {
-        applicationId = "id.rivaldy.githubuser"
         minSdk = Versions.min_sdk
-        targetSdk = Versions.target_sdk
-        versionCode = Versions.version_code
-        versionName = Versions.version_name
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -28,21 +23,10 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
-    }
-    buildFeatures {
-        viewBinding = true
-    }
-    dynamicFeatures += setOf(Modules.detailFeature)
 }
 
 dependencies {
-
+    implementation(project(Modules.app))
     implementation(project(Modules.core))
 
     // Default Dependencies

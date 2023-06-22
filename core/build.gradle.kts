@@ -3,6 +3,7 @@ import dependencies.MyDependencies
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-parcelize")
     id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
 }
