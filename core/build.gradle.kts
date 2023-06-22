@@ -56,6 +56,7 @@ dependencies {
     api(MyDependencies.retrofit)
     api(MyDependencies.retrofit2_converter_gson)
     api(MyDependencies.retrofit2_adapter_rxjava2)
+    api(MyDependencies.okhttp3)
 
     // Glide
     api(MyDependencies.glide)
