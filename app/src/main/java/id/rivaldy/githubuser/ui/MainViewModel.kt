@@ -6,7 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.rivaldy.core.data.UiState
-import id.rivaldy.core.data.model.user.UserResponse
+import id.rivaldy.core.domain.model.User
+import id.rivaldy.core.domain.model.mapper.UserMapper
 import id.rivaldy.core.domain.usecase.user.GetUsersUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
@@ -21,17 +22,20 @@ class MainViewModel @Inject constructor(
     private val getUsersUseCase: GetUsersUseCase,
 ) : ViewModel() {
 
-    private val _uiStateUsers: MutableLiveData<UiState<List<UserResponse>>> = MutableLiveData()
-    val uiStateUsers: LiveData<UiState<List<UserResponse>>> get() = _uiStateUsers
+    private val _uiStateUsers: MutableLiveData<UiState<List<User>>> = MutableLiveData()
+    val uiStateUsers: LiveData<UiState<List<User>>> get() = _uiStateUsers
 
     fun getUsersApiCall() {
         viewModelScope.launch {
             getUsersUseCase.execute(Unit)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .map { users ->
+                    users.map { UserMapper.fromRemote(it) }
+                }
                 .subscribeBy(
-                    onNext = { user ->
-                        _uiStateUsers.value = UiState.Success(user)
+                    onNext = { users ->
+                        _uiStateUsers.value = UiState.Success(users)
                     },
                     onError = { e ->
                         _uiStateUsers.value = UiState.Error(e.message.toString())
