@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:progressDestination="@id/detailProgressFragment"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/detailProgressFragment"
+        android:name="id.rivaldy.githubuser.ui.progress.ProgressFragment" />
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="id.rivaldy.githubuser.ui.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main">
+
+        <action
+            android:id="@+id/navigateToDetailFeature"
+            app:destination="@id/detailNavGraph"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+    </fragment>
+
+    <include-dynamic
+        android:id="@+id/detailNavGraph"
+        app:graphResName="detailNavGraph"
+        app:moduleName="@string/title_detail" />
+</navigation>

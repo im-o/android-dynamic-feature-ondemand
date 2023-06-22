@@ -20,6 +20,7 @@ object MyDependencies {
     // Navigation
     const val navigation_ui_ktx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation_ktx_version}"
     const val navigation_fragment_ktx = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation_ktx_version}"
+    const val navigation_dynamic_features_fragment = "androidx.navigation:navigation-dynamic-features-fragment:${Versions.navigation_ktx_version}"
 
     // Remote
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit_version}"

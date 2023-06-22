@@ -50,6 +50,7 @@ dependencies {
     api(MyDependencies.swiperefreshlayout)
     api(MyDependencies.navigation_ui_ktx)
     api(MyDependencies.navigation_fragment_ktx)
+    api(MyDependencies.navigation_dynamic_features_fragment)
 
     // Remote
     api(MyDependencies.retrofit)

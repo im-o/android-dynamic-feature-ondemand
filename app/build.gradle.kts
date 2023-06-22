@@ -42,7 +42,6 @@ android {
 }
 
 dependencies {
-
     implementation(project(Modules.core))
 
     // Default Dependencies

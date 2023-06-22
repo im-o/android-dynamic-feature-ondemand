@@ -2,5 +2,8 @@
     <string name="app_name">Github User App</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_detail">Module Detail</string>
+    <string name="title_detail">ModuleDetail</string>
+    <string name="install_failed">Install Failed</string>
+    <string name="install_cancelled">Install Cancelled</string>
+    <string name="loading">Loading</string>
 </resources>
