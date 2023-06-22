@@ -16,18 +16,18 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
 
-        <action
-            android:id="@+id/navigateToDetailFeature"
-            app:destination="@id/detailNavGraph"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <!--        <action-->
+        <!--            android:id="@+id/navigateToDetailFeature"-->
+        <!--            app:destination="@id/detailNavGraph"-->
+        <!--            app:enterAnim="@anim/nav_default_enter_anim"-->
+        <!--            app:exitAnim="@anim/nav_default_exit_anim"-->
+        <!--            app:popEnterAnim="@anim/nav_default_pop_enter_anim"-->
+        <!--            app:popExitAnim="@anim/nav_default_pop_exit_anim" />-->
 
     </fragment>
 
-    <include-dynamic
-        android:id="@+id/detailNavGraph"
-        app:graphResName="detailNavGraph"
-        app:moduleName="@string/title_detail" />
+    <!--    <include-dynamic-->
+    <!--        android:id="@+id/detailNavGraph"-->
+    <!--        app:graphResName="detailNavGraph"-->
+    <!--        app:moduleName="@string/title_detail" />-->
 </navigation>

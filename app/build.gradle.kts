@@ -38,7 +38,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
-    dynamicFeatures += setOf(Modules.detailFeature)
+    //dynamicFeatures += setOf(Modules.detailFeature)
 }
 
 dependencies {
