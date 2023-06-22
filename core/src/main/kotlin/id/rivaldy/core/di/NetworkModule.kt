@@ -5,7 +5,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import id.rivaldy.core.BuildConfig
 import id.rivaldy.core.data.datasource.remote.ApiService
 import id.rivaldy.core.network.interceptor.HttpRequestInterceptor
 import okhttp3.OkHttpClient
@@ -23,8 +22,7 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
-        return if (BuildConfig.DEBUG) HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-        else HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
+        return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
     }
 
     @Provides

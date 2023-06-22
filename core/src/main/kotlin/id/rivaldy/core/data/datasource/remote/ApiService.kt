@@ -12,7 +12,7 @@ interface ApiService {
     suspend fun getUsers(): UserResponse
 
     @GET("users/{username}")
-    suspend fun getDetailUser(
+    suspend fun getUserDetail(
         @Path("username") username: String
     ): UserDetailResponse
 }
