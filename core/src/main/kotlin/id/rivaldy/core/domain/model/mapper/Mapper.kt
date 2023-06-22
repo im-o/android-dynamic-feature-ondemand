@@ -1,14 +1,14 @@
 package id.rivaldy.core.domain.model.mapper
 
 import id.rivaldy.core.data.model.detailuser.UserDetailResponse
-import id.rivaldy.core.data.model.user.UserItem
+import id.rivaldy.core.data.model.user.UserResponse
 import id.rivaldy.core.domain.model.User
 import id.rivaldy.core.domain.model.UserDetail
 
 /** Created by github.com/im-o on 6/22/2023. */
 
 object UserMapper {
-    fun fromRemote(user: UserItem): User {
+    fun fromRemote(user: UserResponse): User {
         return User(user.id, user.login, user.type, user.avatarUrl)
     }
 }

@@ -3,7 +3,6 @@ import dependencies.MyDependencies
 plugins {
     id("com.android.dynamic-feature")
     id("org.jetbrains.kotlin.android")
-    id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
 }
 
@@ -24,14 +23,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
     buildFeatures {
         viewBinding = true
+    }
+    kapt {
+        correctErrorTypes = true
     }
 }
 
@@ -45,6 +47,5 @@ dependencies {
     androidTestImplementation(MyDependencies.espresso_core)
 
     // DI - Hilt
-    implementation(MyDependencies.hilt)
     kapt(MyDependencies.hilt_kapt)
 }

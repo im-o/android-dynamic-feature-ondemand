@@ -10,28 +10,37 @@ plugins {
 
 @Suppress("UnstableApiUsage")
 android {
-    namespace = "id.rivaldy.core"
     compileSdk = Versions.compile_sdk
 
     defaultConfig {
         minSdk = Versions.min_sdk
+        targetSdk = Versions.target_sdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
+        debug {
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            buildConfigField("String", "BASE_URL", "\"https://api.github.com\"")
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            buildConfigField("String", "BASE_URL", "\"https://api.github.com\"")
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+    kapt {
+        correctErrorTypes = true
     }
 }
 
@@ -61,8 +70,10 @@ dependencies {
     // Glide
     api(MyDependencies.glide)
 
-    // RxKotlin
+    // ReactiveX RxJava
+    api(MyDependencies.rx_android)
     api(MyDependencies.rx_kotlin)
+    api(MyDependencies.rx_java)
 
     // Lifecycle KTX
     api(MyDependencies.lifecycle_extensions)

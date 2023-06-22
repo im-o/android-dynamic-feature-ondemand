@@ -28,8 +28,10 @@ object MyDependencies {
     const val retrofit2_adapter_rxjava2 = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit_version}"
     const val okhttp3 = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp3_version}"
 
-    // RxKotlin
-    const val rx_kotlin = "io.reactivex.rxjava3:rxkotlin:${Versions.rxkotlin_version}"
+    // ReactiveX RxJava
+    const val rx_android = "io.reactivex.rxjava2:rxandroid:${Versions.rxandroid_version}"
+    const val rx_kotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rxkotlin_version}"
+    const val rx_java = "io.reactivex.rxjava2:rxjava:${Versions.rxjava_version}"
 
     // Glide
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide_version}"
