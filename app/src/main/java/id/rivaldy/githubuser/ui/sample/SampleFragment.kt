@@ -1,4 +1,4 @@
-package id.rivaldy.detail.ui
+package id.rivaldy.githubuser.ui.sample
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,56 +6,62 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import dagger.hilt.android.AndroidEntryPoint
+import id.rivaldy.core.data.UiState
 import id.rivaldy.core.domain.model.UserDetail
-import id.rivaldy.core.util.UtilConstants.STR_USERNAME
-import id.rivaldy.detail.databinding.FragmentDetailBinding
+import id.rivaldy.core.util.Extensions.myToast
+import id.rivaldy.core.util.UtilFunctions
+import id.rivaldy.githubuser.R
+import id.rivaldy.githubuser.databinding.FragmentSampleBinding
 
-/** Created by github.com/im-o on 6/22/2023. */
+/** Created by github.com/im-o on 6/23/2023. */
 
-class DetailFragment : Fragment() {
-    private lateinit var binding: FragmentDetailBinding
+@AndroidEntryPoint
+class SampleFragment : Fragment() {
+    private lateinit var binding: FragmentSampleBinding
     private var usernameExtra: String = ""
-    //private val viewModel by viewModels<SampleViewModel>()
+    private val viewModel by viewModels<SampleViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentDetailBinding.inflate(inflater, container, false)
+        binding = FragmentSampleBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        usernameExtra = arguments?.getString(STR_USERNAME) ?: ""
+        usernameExtra = arguments?.getString("username") ?: ""
         initData()
         initObserve()
     }
 
     private fun initData() {
-        //viewModel.getUserDetailApiCall(usernameExtra)
+        viewModel.getUserDetailApiCall(usernameExtra)
     }
 
     private fun initObserve() {
-//        viewModel.uiStateUserDetail.observe(viewLifecycleOwner) { uiState ->
-//            when (uiState) {
-//                is UiState.Loading -> {
-//                    isLoadData(true)
-//                }
-//
-//                is UiState.Success -> {
-//                    UtilFunctions.logE(uiState.data.toString())
-//                    showUserDetail(uiState.data)
-//                }
-//
-//                is UiState.Error -> {
-//                    val errorMessage = uiState.errorMessage
-//                    requireContext().myToast(errorMessage)
-//                    showUserDetail()
-//                }
-//            }
-//        }
+        viewModel.uiStateUserDetail.observe(viewLifecycleOwner) { uiState ->
+            when (uiState) {
+                is UiState.Loading -> {
+                    isLoadData(true)
+                }
+
+                is UiState.Success -> {
+                    UtilFunctions.logE(uiState.data.toString())
+                    showUserDetail(uiState.data)
+                }
+
+                is UiState.Error -> {
+                    val errorMessage = uiState.errorMessage
+                    requireContext().myToast(errorMessage)
+                    showUserDetail()
+                }
+            }
+        }
     }
 
     private fun showUserDetail(item: UserDetail? = null) {
@@ -73,7 +79,7 @@ class DetailFragment : Fragment() {
                 descriptionTV.text = item.bio ?: "-"
                 Glide.with(root.context)
                     .load(item.avatarUrl)
-                    .placeholder(android.R.color.darker_gray)
+                    .placeholder(R.color.colorDividerHigh)
                     .into(imageIV)
             }
         }

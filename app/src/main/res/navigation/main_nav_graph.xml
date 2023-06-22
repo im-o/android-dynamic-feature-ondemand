@@ -3,22 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:progressDestination="@id/detailProgressFragment"
     app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/detailProgressFragment"
-        android:name="id.rivaldy.githubuser.ui.progress.ProgressFragment" />
+        android:name="id.rivaldy.githubuser.ui.progress.ProgressFragment"
+        tools:layout="@layout/fragment_progress" />
+
+    <fragment
+        android:id="@+id/sampleFragment"
+        android:name="id.rivaldy.githubuser.ui.sample.SampleFragment"
+        android:label="@string/user_detail"
+        tools:layout="@layout/fragment_sample" />
 
     <fragment
         android:id="@+id/mainFragment"
         android:name="id.rivaldy.githubuser.ui.MainFragment"
-        android:label="fragment_main"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_main">
 
         <action
             android:id="@+id/navigateToDetailFeature"
-            app:destination="@id/detailNavGraph"
+            app:destination="@id/sampleFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -28,6 +34,7 @@
 
     <include-dynamic
         android:id="@+id/detailNavGraph"
+        android:label="@string/user_detail"
         app:graphResName="detailNavGraph"
         app:moduleName="@string/title_detail" />
 </navigation>

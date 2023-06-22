@@ -4,4 +4,5 @@ package id.rivaldy.core.util
 
 object UtilConstants {
     const val ZERO_DATA = 0
+    const val STR_USERNAME = "username"
 }

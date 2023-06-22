@@ -40,7 +40,7 @@ android {
     kapt {
         correctErrorTypes = true
     }
-    //dynamicFeatures += setOf(Modules.detailFeature)
+    dynamicFeatures += setOf(Modules.detailFeature)
 }
 
 dependencies {

@@ -20,7 +20,7 @@ class UserRepositoryImpl @Inject constructor(
         return apiService.getUsers()
     }
 
-    override suspend fun getUserDetailApiCall(username: String): Single<UserDetailResponse> {
+    override fun getUserDetailApiCall(username: String): Single<UserDetailResponse> {
         return apiService.getUserDetail(username)
     }
 }

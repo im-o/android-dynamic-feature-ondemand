@@ -1,4 +1,4 @@
-package id.rivaldy.detail.ui
+package id.rivaldy.githubuser.ui.sample
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -15,10 +15,10 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-/** Created by github.com/im-o on 6/22/2023. */
+/** Created by github.com/im-o on 6/23/2023. */
 
 @HiltViewModel
-class DetailViewModel @Inject constructor(
+class SampleViewModel @Inject constructor(
     private val getUserDetailUseCase: GetUserDetailUseCase,
 ) : ViewModel() {
 

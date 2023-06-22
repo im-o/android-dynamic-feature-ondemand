@@ -9,5 +9,5 @@ import io.reactivex.Single
 
 interface UserRepository {
     fun getUsersApiCall(): Observable<List<UserResponse>>
-    suspend fun getUserDetailApiCall(username: String): Single<UserDetailResponse>
+    fun getUserDetailApiCall(username: String): Single<UserDetailResponse>
 }

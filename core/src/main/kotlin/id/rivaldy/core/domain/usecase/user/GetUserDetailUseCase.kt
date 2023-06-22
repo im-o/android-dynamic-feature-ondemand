@@ -2,7 +2,7 @@ package id.rivaldy.core.domain.usecase.user
 
 import id.rivaldy.core.data.model.detailuser.UserDetailResponse
 import id.rivaldy.core.domain.repository.user.UserRepository
-import id.rivaldy.core.domain.usecase.BaseUseCaseSuspend
+import id.rivaldy.core.domain.usecase.BaseUseCase
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -10,8 +10,8 @@ import javax.inject.Inject
 
 class GetUserDetailUseCase @Inject constructor(
     private val repository: UserRepository
-) : BaseUseCaseSuspend<String, Single<UserDetailResponse>>() {
-    override suspend fun execute(params: String): Single<UserDetailResponse> {
+) : BaseUseCase<String, Single<UserDetailResponse>>() {
+    override fun execute(params: String): Single<UserDetailResponse> {
         return repository.getUserDetailApiCall(params)
     }
 }

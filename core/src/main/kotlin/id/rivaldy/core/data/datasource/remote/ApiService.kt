@@ -14,7 +14,7 @@ interface ApiService {
     fun getUsers(): Observable<List<UserResponse>>
 
     @GET("/users/{username}")
-    suspend fun getUserDetail(
+    fun getUserDetail(
         @Path("username") username: String
     ): Single<UserDetailResponse>
 }
