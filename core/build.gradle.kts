@@ -1,6 +1,10 @@
+import dependencies.MyDependencies
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("dagger.hilt.android.plugin")
+    id("kotlin-kapt")
 }
 
 @Suppress("UnstableApiUsage")
@@ -22,20 +26,52 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 }
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.8.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    // Default Dependencies
+    api(MyDependencies.core_ktx)
+    api(MyDependencies.appcompat)
+    api(MyDependencies.material)
+    api(MyDependencies.constraint_layout)
+    testImplementation(MyDependencies.junit)
+    androidTestImplementation(MyDependencies.test_ext_junit)
+    androidTestImplementation(MyDependencies.espresso_core)
+
+    // UI
+    api(MyDependencies.swiperefreshlayout)
+    api(MyDependencies.navigation_ui_ktx)
+    api(MyDependencies.navigation_fragment_ktx)
+
+    // Remote
+    api(MyDependencies.retrofit)
+    api(MyDependencies.retrofit2_converter_gson)
+    api(MyDependencies.retrofit2_adapter_rxjava2)
+
+    // Glide
+    api(MyDependencies.glide)
+
+    // RxKotlin
+    api(MyDependencies.rx_kotlin)
+
+    // Lifecycle KTX
+    api(MyDependencies.lifecycle_extensions)
+
+    // Activity & Fragment KTX
+    api(MyDependencies.fragment_ktx)
+    api(MyDependencies.activity_ktx)
+
+    // DI - Hilt
+    implementation(MyDependencies.hilt)
+    kapt(MyDependencies.hilt_kapt)
+
+    // ViewModel with Hilt
+    api(MyDependencies.hilt_viewmodel)
 }
