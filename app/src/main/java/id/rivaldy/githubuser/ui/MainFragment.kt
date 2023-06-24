@@ -46,8 +46,7 @@ class MainFragment : Fragment() {
     }
 
     private fun initData() {
-        binding.noDataTV.setOnClickListener { navigateToDetailModule("im-o") }
-        //viewModel.getUsersApiCall()
+        viewModel.getUsersApiCall()
     }
 
     private fun initObserve() {

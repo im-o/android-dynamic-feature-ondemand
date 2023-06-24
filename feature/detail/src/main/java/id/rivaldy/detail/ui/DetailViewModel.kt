@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
 import id.rivaldy.core.data.UiState
 import id.rivaldy.core.domain.model.UserDetail
 import id.rivaldy.core.domain.model.mapper.UserDetailMapper
@@ -17,7 +16,6 @@ import javax.inject.Inject
 
 /** Created by github.com/im-o on 6/22/2023. */
 
-@HiltViewModel
 class DetailViewModel @Inject constructor(
     private val getUserDetailUseCase: GetUserDetailUseCase,
 ) : ViewModel() {

@@ -18,8 +18,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:background="@color/design_default_color_primary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_collapseMode="parallax"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
             app:title="@string/app_name"
             app:titleTextColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>

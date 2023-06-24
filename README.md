@@ -28,9 +28,6 @@ An Android app built with Kotlin, using the awesome Use Case design pattern 🤘
   allows you to mock objects and functions in a breeze, so you can focus on writing awesome code that blows everyone's minds.
 - [OkHttp3 🌐](https://github.com/square/okhttp) - Looking for a reliable and efficient HTTP client for your app? Look no further than OkHttp3! This battle-tested library is used by some of the largest
   apps out there, and for good reason: it's fast, reliable, and easy to use.
-- [Material Compose 💄](https://github.com/material-components/material-components-android-compose) - Want to make your app look and feel like a million bucks? Material Compose is the answer! This
-  library provides a range of customizable components and widgets that will make your app look sleek and polished, with an intuitive API that makes it easy to get started. Whether you're building a
-  small app or a massive enterprise system, Material Compose has everything you need to take your UI to the next level.
 
 ## Demo!
 
