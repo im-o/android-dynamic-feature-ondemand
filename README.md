@@ -1,6 +1,5 @@
 ## Sample App Github User with Use Case Design Pattern 🚀
 
-[On Progress]  
 An Android app built with Kotlin, using the awesome Use Case design pattern 🤘. It consumes Github User API.
 
 ## Cool Tech Stack!
@@ -33,7 +32,7 @@ An Android app built with Kotlin, using the awesome Use Case design pattern 🤘
 
 Check out this cool GIF of the app in action! 🎬
 
-<img src="https://github.com/im-o/android-dynamic-feature-ondemand/assets/22957498/74a4c9ca-f874-4516-bc2d-55018c7a0149" alt="Compose Usecase Pattern" height="700"/>
+<img src="https://github.com/im-o/android-dynamic-feature-ondemand/assets/22957498/8bae662c-8b72-4162-95c5-366eaebf4a32" alt="Compose Usecase Pattern" height="700"/>
 
 ## Setup Requirements
 
