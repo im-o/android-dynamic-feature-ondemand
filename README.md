@@ -33,7 +33,7 @@ An Android app built with Kotlin, using the awesome Use Case design pattern 🤘
 
 Check out this cool GIF of the app in action! 🎬
 
-<img src="https://github.com/im-o/jetpack-compose-clean-architecture/assets/22957498/7e65c36b-e2d0-4085-887a-db3d1a581ad4" alt="Compose Usecase Pattern" height="600"/>
+<img src="https://github.com/im-o/android-dynamic-feature-ondemand/assets/22957498/74a4c9ca-f874-4516-bc2d-55018c7a0149" alt="Compose Usecase Pattern" height="700"/>
 
 ## Setup Requirements
 
