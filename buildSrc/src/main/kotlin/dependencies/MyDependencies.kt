@@ -49,4 +49,7 @@ object MyDependencies {
 
     // ViewModel with Hilt
     const val hilt_viewmodel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hilt_viewModels}"
+
+    // Android Play Core
+    const val android_play_core = "com.google.android.play:core:${Versions.android_play_core_version}"
 }

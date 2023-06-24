@@ -76,7 +76,9 @@ dependencies {
     api(MyDependencies.rx_java)
 
     // Lifecycle KTX
-    api(MyDependencies.lifecycle_extensions)
+    api(MyDependencies.lifecycle_extensions) {
+        exclude(group = "androidx.lifecycle", module = "lifecycle-viewmodel")
+    }
 
     // Activity & Fragment KTX
     api(MyDependencies.fragment_ktx)
@@ -88,4 +90,7 @@ dependencies {
 
     // ViewModel with Hilt
     api(MyDependencies.hilt_viewmodel)
+
+    // Android Play Core
+    api(MyDependencies.android_play_core)
 }

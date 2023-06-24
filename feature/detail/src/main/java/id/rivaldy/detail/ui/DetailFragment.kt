@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import id.rivaldy.core.domain.model.UserDetail
-import id.rivaldy.core.util.UtilConstants.STR_USERNAME
+import id.rivaldy.core.util.Extensions.myToast
 import id.rivaldy.detail.databinding.FragmentDetailBinding
 
 /** Created by github.com/im-o on 6/22/2023. */
@@ -16,6 +17,7 @@ import id.rivaldy.detail.databinding.FragmentDetailBinding
 class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
     private var usernameExtra: String = ""
+    private val args: DetailFragmentArgs by navArgs()
     //private val viewModel by viewModels<SampleViewModel>()
 
     override fun onCreateView(
@@ -28,7 +30,8 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        usernameExtra = arguments?.getString(STR_USERNAME) ?: ""
+        usernameExtra = args.username ?: ""
+        requireContext().myToast("usernameExtra : ($usernameExtra)")
         initData()
         initObserve()
     }

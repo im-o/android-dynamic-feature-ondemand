@@ -7,6 +7,13 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="id.rivaldy.detail.ui.DetailFragment"
-        android:label="fragment_second"
-        tools:layout="@layout/fragment_detail" />
+        android:label="@string/user_detail"
+        app:moduleName="detail"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="username"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

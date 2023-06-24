@@ -3,6 +3,7 @@
 buildscript {
     dependencies {
         classpath("com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt_gradle_plugin}")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation_ktx_version}")
     }
 }
 

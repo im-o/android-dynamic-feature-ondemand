@@ -35,4 +35,6 @@ object Versions {
     const val rxandroid_version = "2.1.0"
     const val rxkotlin_version = "2.3.0"
     const val rxjava_version = "2.2.7"
+
+    const val android_play_core_version = "1.10.3"
 }

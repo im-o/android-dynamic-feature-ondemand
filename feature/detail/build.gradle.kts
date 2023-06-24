@@ -3,6 +3,8 @@ import dependencies.MyDependencies
 plugins {
     id("com.android.dynamic-feature")
     id("org.jetbrains.kotlin.android")
+    id("androidx.navigation.safeargs.kotlin")
+    id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
 }
 
@@ -47,5 +49,6 @@ dependencies {
     androidTestImplementation(MyDependencies.espresso_core)
 
     // DI - Hilt
+    implementation(MyDependencies.hilt)
     kapt(MyDependencies.hilt_kapt)
 }

@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.dynamicfeatures.DynamicExtras
 import androidx.navigation.dynamicfeatures.DynamicInstallMonitor
+import com.google.android.play.core.splitinstall.SplitInstallManager
 import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,11 +30,9 @@ class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
     private val mainAdapter by lazy { MainAdapter { mainAdapterClick(it) } }
     private val viewModel by viewModels<MainViewModel>()
+    private lateinit var manager: SplitInstallManager
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -41,12 +40,14 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.listDataRV.adapter = mainAdapter
+        manager = SplitInstallManagerFactory.create(requireContext())
         initData()
         initObserve()
     }
 
     private fun initData() {
-        viewModel.getUsersApiCall()
+        binding.noDataTV.setOnClickListener { navigateToDetailModule("im-o") }
+        //viewModel.getUsersApiCall()
     }
 
     private fun initObserve() {
@@ -81,21 +82,20 @@ class MainFragment : Fragment() {
     }
 
     private fun mainAdapterClick(item: User) {
-        //navigateToDetailModule(item.username ?: "")
-        val navController = Navigation.findNavController(binding.root)
-        val bundle = Bundle().apply {
-            putString(STR_USERNAME, item.username)
-        }
-        navController.navigate(R.id.navigateToDetailFeature, bundle)
+        navigateToDetailModule(item.username ?: "")
     }
 
     private fun navigateToDetailModule(username: String) {
         val navController = Navigation.findNavController(binding.root)
         val installMonitor = DynamicInstallMonitor()
 
+        val bundle = Bundle().apply {
+            putString(STR_USERNAME, username)
+        }
+
         navController.navigate(
-            R.id.navigateToDetailFeature,
-            null,
+            R.id.navigateToDetailNavGraph,
+            bundle,
             null,
             DynamicExtras(installMonitor)
         )
@@ -104,37 +104,47 @@ class MainFragment : Fragment() {
             installMonitor.status.observe(viewLifecycleOwner) { sessionState ->
                 when (sessionState.status()) {
                     SplitInstallSessionStatus.INSTALLED -> {
-                        val bundle = Bundle().apply {
-                            putString(STR_USERNAME, username)
-                        }
-                        navController.navigate(R.id.navigateToDetailFeature, bundle)
-                        logE("initView: INSTALLED")
+                        // call again if feature complete installed
+                        navController.navigate(
+                            R.id.navigateToDetailNavGraph,
+                            bundle,
+                            null,
+                            DynamicExtras(installMonitor)
+                        )
+                    }
+
+                    SplitInstallSessionStatus.DOWNLOADING -> {
+                        requireContext().myToast("Download the new feature...")
                     }
 
                     SplitInstallSessionStatus.REQUIRES_USER_CONFIRMATION -> {
                         SplitInstallManagerFactory.create(requireContext())
                             .startConfirmationDialogForResult(
-                                sessionState,
-                                requireActivity(),
-                                100
+                                sessionState, requireActivity(), REQUIRES_USER_CONFIRMATION_CODE
                             )
-                        logE("initView: REQUIRES_USER_CONFIRMATION")
+                        logE("Installation need permission")
                     }
-                    // Handle all remaining states:
+
                     SplitInstallSessionStatus.FAILED -> {
-                        logE("initView: FAILED")
+                        requireContext().myToast("Installation failed")
                     }
 
                     SplitInstallSessionStatus.CANCELED -> {
-                        logE("initView: CANCELED")
+                        logE("Installation canceled")
                     }
+
+                    else -> logE("Some other status : ${sessionState.status()}")
                 }
 
                 if (sessionState.hasTerminalStatus()) {
-                    logE("initView: hasTerminalStatus")
                     installMonitor.status.removeObservers(viewLifecycleOwner)
+                    logE("Session state has terminal status")
                 }
             }
         }
+    }
+
+    companion object {
+        const val REQUIRES_USER_CONFIRMATION_CODE = 100
     }
 }
