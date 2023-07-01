@@ -21,3 +21,4 @@ local.properties
 /.idea/git_toolbox_prj.xml
 /.idea/gradle.xml
 bundletool*
+app.apks

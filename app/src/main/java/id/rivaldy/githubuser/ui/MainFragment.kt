@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.dynamicfeatures.DynamicExtras
 import androidx.navigation.dynamicfeatures.DynamicInstallMonitor
-import com.google.android.play.core.splitinstall.SplitInstallManager
 import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,7 +30,9 @@ class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
     private val mainAdapter by lazy { MainAdapter { mainAdapterClick(it) } }
     private val viewModel by viewModels<MainViewModel>()
-    private lateinit var manager: SplitInstallManager
+
+    private lateinit var navController: NavController
+    private val installMonitor = DynamicInstallMonitor()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
@@ -39,8 +41,8 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navController = Navigation.findNavController(binding.root)
         binding.listDataRV.adapter = mainAdapter
-        manager = SplitInstallManagerFactory.create(requireContext())
         initData()
         initObserve()
     }
@@ -84,32 +86,26 @@ class MainFragment : Fragment() {
         navigateToDetailModule(item.username ?: "")
     }
 
-    private fun navigateToDetailModule(username: String) {
-        val navController = Navigation.findNavController(binding.root)
-        val installMonitor = DynamicInstallMonitor()
-
-        val bundle = Bundle().apply {
-            putString(STR_USERNAME, username)
-        }
-
+    private fun navigateToDetailNavGraph(bundle: Bundle) {
         navController.navigate(
             R.id.navigateToDetailNavGraph,
             bundle,
             null,
             DynamicExtras(installMonitor)
         )
+    }
 
+    private fun navigateToDetailModule(username: String) {
+        val bundle = Bundle().apply {
+            putString(STR_USERNAME, username)
+        }
+        navigateToDetailNavGraph(bundle)
         if (installMonitor.isInstallRequired) {
             installMonitor.status.observe(viewLifecycleOwner) { sessionState ->
                 when (sessionState.status()) {
                     SplitInstallSessionStatus.INSTALLED -> {
                         // call again if feature complete installed
-                        navController.navigate(
-                            R.id.navigateToDetailNavGraph,
-                            bundle,
-                            null,
-                            DynamicExtras(installMonitor)
-                        )
+                        navigateToDetailNavGraph(bundle)
                     }
 
                     SplitInstallSessionStatus.DOWNLOADING -> {

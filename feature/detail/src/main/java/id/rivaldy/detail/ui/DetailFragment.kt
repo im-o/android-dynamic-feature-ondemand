@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import dagger.hilt.android.EntryPointAccessors
+import id.rivaldy.core.base.BaseSplitFragment
 import id.rivaldy.core.data.UiState
 import id.rivaldy.core.di.sub.SubModuleDependencies
 import id.rivaldy.core.domain.model.UserDetail
@@ -23,7 +23,7 @@ import javax.inject.Inject
 
 /** Created by github.com/im-o on 6/22/2023. */
 
-class DetailFragment : Fragment() {
+class DetailFragment : BaseSplitFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var binding: FragmentDetailBinding
