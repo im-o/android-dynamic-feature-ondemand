@@ -32,7 +32,7 @@ An Android app built with Kotlin, using the awesome Use Case design pattern 🤘
 
 Check out this cool GIF of the app in action! 🎬
 
-<img src="https://github.com/im-o/android-dynamic-feature-ondemand/assets/22957498/8bae662c-8b72-4162-95c5-366eaebf4a32" alt="Compose Usecase Pattern" height="700"/>
+<img src="https://github.com/im-o/android-dynamic-feature-ondemand/assets/22957498/02c4a2d3-d8c0-49d8-89a0-45c98257d2c1" alt="Image success installing dynamic feature" height="700"/>
 
 ## Setup Requirements
 
