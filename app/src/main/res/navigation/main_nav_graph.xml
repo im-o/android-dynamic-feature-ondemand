@@ -12,12 +12,6 @@
         tools:layout="@layout/fragment_progress" />
 
     <fragment
-        android:id="@+id/sampleFragment"
-        android:name="id.rivaldy.githubuser.ui.sample.SampleFragment"
-        android:label="@string/user_detail"
-        tools:layout="@layout/fragment_sample" />
-
-    <fragment
         android:id="@+id/mainFragment"
         android:name="id.rivaldy.githubuser.ui.MainFragment"
         android:label="@string/app_name"

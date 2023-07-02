@@ -19,9 +19,8 @@ class MainAdapter(
     inner class ViewHolder(private val binding: CardItemUserBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindItem(item: User) {
             binding.apply {
-                val urlImage = item.avatarUrl
                 Glide.with(root.context)
-                    .load(urlImage)
+                    .load(R.drawable.alternative_privacy)//.load(item.avatarUrl)
                     .placeholder(R.color.colorDividerHigh)
                     .into(imageIV)
                 userNameTV.text = root.context.getString(R.string.username_, item.username)

@@ -19,6 +19,7 @@ import id.rivaldy.core.util.UtilFunctions.logE
 import id.rivaldy.detail.databinding.FragmentDetailBinding
 import id.rivaldy.detail.di.DaggerDetailModuleComponent
 import id.rivaldy.detail.di.DetailModuleComponent
+import id.rivaldy.githubuser.R
 import javax.inject.Inject
 
 /** Created by github.com/im-o on 6/22/2023. */
@@ -106,7 +107,7 @@ class DetailFragment : BaseSplitFragment() {
                 info3TV.text = info3
                 descriptionTV.text = item.bio ?: "-"
                 Glide.with(root.context)
-                    .load(item.avatarUrl)
+                    .load(R.drawable.alternative_privacy)//.load(item.avatarUrl)
                     .placeholder(android.R.color.darker_gray)
                     .into(imageIV)
             }
