@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.dynamicfeatures.DynamicExtras
 import androidx.navigation.dynamicfeatures.DynamicInstallMonitor
 import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
@@ -17,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.rivaldy.core.data.UiState
 import id.rivaldy.core.domain.model.User
 import id.rivaldy.core.util.Extensions.myToast
+import id.rivaldy.core.util.Extensions.safeNavigate
 import id.rivaldy.core.util.UtilConstants.STR_USERNAME
 import id.rivaldy.core.util.UtilConstants.ZERO_DATA
 import id.rivaldy.core.util.UtilFunctions.logE
@@ -87,12 +87,9 @@ class MainFragment : Fragment() {
     }
 
     private fun navigateToDetailNavGraph(bundle: Bundle) {
-        navController.navigate(
-            R.id.navigateToDetailNavGraph,
-            bundle,
-            null,
-            DynamicExtras(installMonitor)
-        )
+        val currentDestinationId = R.id.mainFragment
+        val destinationId = R.id.navigateToDetailNavGraph
+        navController.safeNavigate(currentDestinationId, destinationId, bundle)
     }
 
     private fun navigateToDetailModule(username: String) {
