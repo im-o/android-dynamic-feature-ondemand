@@ -11,7 +11,9 @@ An Android app built with Kotlin, using the awesome Use Case design pattern 🤘
 - [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - With great power comes great responsibility. It's designed to perform actions based on lifecycle changes of
   components like activities and fragments.
 - [Viewmodel](https://developer.android.com/topic/libraries/architecture/viewmodel) -The ViewModel class is like a superhero that stores and manages UI-related data in a lifecycle conscious way!
-- [Kotlin Coroutines](https://developer.android.com/kotlin/coroutines) - A concurrency design pattern that simplifies async code execution on Android. It's like a secret weapon!
+- [RxJava](https://github.com/ReactiveX/RxJava) - A powerful library for composing asynchronous and event-based programs using observable sequences. It provides a rich set of operators and supports
+  concurrency, making it a valuable tool for simplifying async code execution on Android. With RxJava, you can handle complex asynchronous operations and maintain a reactive programming paradigm,
+  making it a secret weapon for Android developers.
 - [Retrofit](https://square.github.io/retrofit) - The superhero REST Client for Java and Android by Square inc under Apache 2.0 license. It's a simple network library used for network transactions and
   capturing JSON response from web services.
 - [GSON](https://github.com/square/gson) - The superhero JSON Parser that understands Kotlin non-nullable and default parameters. It's like a genius!
@@ -27,6 +29,9 @@ An Android app built with Kotlin, using the awesome Use Case design pattern 🤘
   allows you to mock objects and functions in a breeze, so you can focus on writing awesome code that blows everyone's minds.
 - [OkHttp3 🌐](https://github.com/square/okhttp) - Looking for a reliable and efficient HTTP client for your app? Look no further than OkHttp3! This battle-tested library is used by some of the largest
   apps out there, and for good reason: it's fast, reliable, and easy to use.
+- [Glide](https://github.com/bumptech/glide) - The superhero that assists you in effortlessly loading and displaying images in your Android applications. With its powerful features and seamless
+  integration, Glide simplifies the process of handling image loading, caching, and transformation, ensuring smooth and efficient performance. Whether you're working with local resources, remote URLs,
+  or even animated GIFs, Glide has got you covered. Experience the convenience and versatility of Glide for all your image loading needs.
 
 ## Demo!
 
